@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="fospm101" namespace="/" extends="ap-default">
+		<result-types>
+            <result-type name="default-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+                <param name="layout">main-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+        </result-types>        
+        <action name="FOSPM101_*" method="{1}" class="com.tradevan.fosp.action.fospm1.Fospm101Action">    	
+    		<result>/pages/fospm1/fospm101/FOSPM101Qry.jsp</result>
+    		<result name="PAGE_FOSPM101_LocationRep">/pages/fospm1/fospm101/rep/FOSPM101ByLocationRep.jsp</result>
+    		<result name="PAGE_FOSPM101_SouthLocationRep">/pages/fospm1/fospm101/rep/FOSPM101BySouthLocationRep.jsp</result>
+    		<result name="PAGE_FOSPM101_ContinentRep">/pages/fospm1/fospm101/rep/FOSPM101ByContinentRep.jsp</result>
+    		<result name="PAGE_FOSPM101_CountryRep">/pages/fospm1/fospm101/rep/FOSPM101ByCountryRep.jsp</result>
+    		<result name="PAGE_FOSPM101_NewSouthRep">/pages/fospm1/fospm101/rep/FOSPM101ByNewSouthRep.jsp</result>
+    	</action>
+    	
+    	    	
+    	<!-- FOSPM101 JSON Result for JqGrid Content -->
+    	<action name="FOSPM101JSON_*" method="{1}" class="com.tradevan.fosp.action.fospm1.Fospm101Action">    	
+    		<result type="json">
+    			<param name="includeProperties">
+    				.*Lists\[\d+\]\.\w+,					
+					.*caption.*,
+					colMode\[\d+\]\.\w+,
+					colNames\[\d+\]\.\w+,
+					^importNatList.*,
+					^gridList.*,
+					.*gridModel.*
+    			</param>
+				<param name="noCache">true</param>
+				<param name="ignoreHierarchy">false</param>
+    		</result>
+    	</action>    	
+	</package>
+</struts>
